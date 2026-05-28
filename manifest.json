@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Народный Аудитор Кейсов",
+  "version": "1.0.0",
+  "description": "Независимый краудсорсинговый математический мониторинг.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "include_globs": [
+        "*://*.case-battle.*/*",
+        "*://case-battle.*/*",
+        "*://*.casebattle.*/*",
+        "*://casebattle.*/*",
+        "*://*.mycs2.*/*",
+        "*://mycs2.*/*",
+        "*://*.easydrop.*/*",
+        "*://easydrop.*/*"
+      ],
+      "js": [
+        "adapters/case-battle.js",
+        "adapters/mycs2.js",
+        "adapters/easydrop.js",
+        "content.js"
+      ],
+      "css": ["content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "logo.png",
+      "32": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  }
+}
