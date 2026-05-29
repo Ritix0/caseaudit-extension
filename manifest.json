@@ -4,39 +4,20 @@
   "version": "1.0.0",
   "description": "Независимый краудсорсинговый математический мониторинг.",
   "permissions": [
-    "storage"
+    "storage",
+    "activeTab",
+    "scripting"
   ],
   "host_permissions": [
-    "https://*/*"
+    "https://audit.greenbatch.xyz/"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
   ],
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "include_globs": [
-        "*://*.case-battle.*/*",
-        "*://case-battle.*/*",
-        "*://*.casebattle.*/*",
-        "*://casebattle.*/*",
-        "*://*.mycs2.*/*",
-        "*://mycs2.*/*",
-        "*://*.easydrop.*/*",
-        "*://easydrop.*/*"
-      ],
-      "js": [
-        "adapters/case-battle.js",
-        "adapters/mycs2.js",
-        "adapters/easydrop.js",
-        "content.js"
-      ],
-      "css": ["content.css"]
-    }
-  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
